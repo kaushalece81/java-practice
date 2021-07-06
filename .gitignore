@@ -20,9 +20,6 @@ nextgenui/
 **/.springBeans
 *.iml
 .idea
-ample-database/
-ample-integration/
-ample-maven-bootstrap/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
