@@ -1,5 +1,11 @@
 package com.java7;
 
+/*Problems solved
+ * Simple to write and more readable
+ * Less verbose
+ * Multiple exceptions in single catch
+ * Removes duplicate/redundant code
+ * */
 public class MultiCatchDemo {
 	private static int myArray[] = new int[5];
 
