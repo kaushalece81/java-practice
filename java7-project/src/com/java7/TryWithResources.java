@@ -60,7 +60,9 @@ public class TryWithResources {
 			System.out.println(e.getMessage());
 		} finally {
 			try {
+				if(br!=null)
 				br.close();
+				if(fr!=null)
 				fr.close();
 			} catch (IOException e1) {
 				e1.printStackTrace();
