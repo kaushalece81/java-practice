@@ -1,0 +1,5 @@
+go to browser
+http://localhost:8761/
+
+
+add annotation @EnableEurekaServer in main class

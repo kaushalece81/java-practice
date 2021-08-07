@@ -1,0 +1,88 @@
+copied <spring-cloud.version>2020.0.2</spring-cloud.version>  from property
+  <properties>
+    <java.version>11</java.version>
+    <spring-cloud.version>2020.0.2</spring-cloud.version>
+  </properties>
+  by generating one project with dependency eureka discovery client and go to explore option in spring initializer
+
+   <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+      </dependency>
+
+      <dependencyManagement>
+          <dependencies>
+            <dependency>
+              <groupId>org.springframework.cloud</groupId>
+              <artifactId>spring-cloud-dependencies</artifactId>
+              <version>${spring-cloud.version}</version>
+              <type>pom</type>
+              <scope>import</scope>
+            </dependency>
+          </dependencies>
+        </dependencyManagement>
+
+        <build>
+            <plugins>
+              <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+              </plugin>
+            </plugins>
+          </build>
+
+open intellij in current folder type command in cmd prompt at particular folder
+ idea64 .
+{
+    "firstName" : "kaushal",
+    "lastName" : "sharma",
+    "email" : "kaushalece81@gmail.com",
+    "departmentId" : 1
+}
+
+URI    http://localhost:9002/users/
+http://localhost:9002/users/1
+
+http://localhost:9001/departments/1
+
+
+
+registry short cut
+Press Ctrl+Shift+A
+Search for Registry ...
+scroll and find "compiler.automake.allow.when.app.running" then select the checkbox to make it active.
+Click close
+File Menu -> settings ...
+Expand Build, Execution, Deployment
+Select Compiler
+Select checkbox Build project automatically
+Apply
+Click Ok
+
+
+H2 database has an embedded GUI console for browsing the contents of a database and running SQL queries. By default, the H2 console is not enabled in Spring.
+
+To enable it, we need to add the following property to application.properties:
+
+spring.h2.console.enabled=true
+Then, after starting the application, we can navigate to http://localhost:8080/h2-console, which will present us with a login page.
+
+On the login page, we'll supply the same credentials that we used in the application.properties:
+  spring.datasource.url=jdbc:h2:mem:testdb
+  spring.datasource.driverClassName=org.h2.Driver
+  spring.datasource.username=sa
+  spring.datasource.password=password
+  spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+
+  Driver Class : org.h2.Driver
+  JDBC URL: jdbc:h2:mem:testdb
+  User Name: sa
+  Pasword: <leave this empty>
+
+
+https://www.youtube.com/watch?v=BnknNTN8icw&list=WL&index=50&t=2384s
+to open project in intellij
+in cmd
+cd C:\workspace-intellij\user-service
+idea64 .

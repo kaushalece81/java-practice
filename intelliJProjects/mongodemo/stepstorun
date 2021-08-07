@@ -1,0 +1,72 @@
+
+https://www.youtube.com/watch?v=BnknNTN8icw&list=WL&index=50&t=2384s
+to open project in intellij ===============
+in cmd
+cd C:\workspace-intellij\mongodemo
+idea64 .
+
+
+shortcut for open terminal  is atl+F12
+short cut for creating non exiting method or class alt + enter
+
+registry short cut ============
+Press Ctrl+Shift+A
+Search for Registry ...
+scroll and find "compiler.automake.allow.when.app.running" then select the checkbox to make it active.
+Click close
+
+build project automatically steps===========
+File Menu -> settings ...
+Expand Build, Execution, Deployment
+Select Compiler
+Select checkbox Build project automatically
+Apply
+Click Ok
+
+localhost:8080/employees/
+POST
+body
+json object
+{
+    "firstName" : "Kaushal",
+    "lastName" : "Sharma",
+    "salary" : 5000,
+    "address" : {
+        "line1" : "303 vidhata residency",
+        "line2" : "BTM layout",
+        "city" : "Bangalore",
+        "country" : "Karnataka"
+    },
+    "doj": "2021-05-07T14:52:04.986+00:00"
+}
+
+
+{
+    "firstName" : "Kaushlender",
+    "lastName" : "Sharma",
+    "salary" : 8000,
+    "address" : {
+        "line1" : "303 vidhata residency",
+        "line2" : "BTM layout",
+        "city" : "Bangalore",
+        "country" : "Karnataka"
+    },
+    "doj": "2021-05-07T14:52:04.986+00:00"
+}
+
+
+
+https://www.youtube.com/watch?v=lz4OX3--bOM
+
+ctrl + alt +S   -- open setting options
+In the Settings/Preferences dialog Ctrl+Alt+S ,
+select Editor | Color Scheme | Color Scheme Font.
+Select the Use color scheme font instead of the default checkbox
+
+To navigate to the super method, press Ctrl+U .
+To navigate to the implementation, press Ctrl+Alt+B .
+
+alt+ enter  -- short cut for create non existing  method
+
+
+https://github.com/Java-Techie-jt/spring-rest-docs-example
