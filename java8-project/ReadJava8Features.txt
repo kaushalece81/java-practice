@@ -1,0 +1,134 @@
+Java8 was released in March 2014
+Java 8 was game changer
+
+Java8 Features
+===================
+Default method in interfaces
+Static method in interfaces
+ForEach loop
+Functional Programming
+Functional interfaces
+@FunctionalInterface annotation - validates whether interface is functional interface or not
+Lambda Expression
+Predicate
+Method or Contructor reference [using double colon ::]
+Streams API
+
+Functional interface
+===================
+Functional interface = Interface with 1 abstract method or SAM Single abstract method interface
+Abstract method = method without body
+
+Example of Functional interface. Before java8 it self these exists
+these interfaces are called SAM Single abstract method Interfaces
+
+Runnable   public abstract void run();
+Callable   V call() throws Exception;
+Comparable  public int compareTo(T o);
+
+Functional Programming
+=========================
+In java 
+we can pass variable/object to function as input parameter to function
+Can we pass method as parameter to another method 
+eg. method1(method2()) before java8 it was not possible but from java8 its possible using lambda expression
+method3((a,b)-> (a+b));
+Lambda is an anonymous function , ie function without name
+Passing function to another function is called Functional programming
+
+Lambda Expression Rules
+===========================
+
+Rule 1 ## {} optional : Single line Lambda expr
+-----------------------------------------------
+curly braces {} are optional if lambda expression is of single line
+(a,b)->{return (a+b);}; ==> (a,b)-> (a+b);
+
+Rule2 ## {} Compulsory : multi line Lambda expr
+-------------------------------------------------
+curly braces {} are mandatory if lambda expression is of multiple line
+(a,b)->{
+System.out.println("This is multiline lambda expr");
+return (a+b);
+} ;
+
+Rule 3 ## {} Compulsory : Lambda with return keyword
+------------------------------------------------------
+curly braces {} are mandatory if lambda expression contains return keyword
+(a,b)->{return (a+b);} ;
+
+(a,b)->{
+System.out.println("This is multiline lambda expr");
+return (a+b);
+};
+
+Rule4 ## Semicolon ; Compulsory
+-----------------------------------
+Every lambda expression syntax should end compulsoryly with semicolon 
+(a,b)-> (a+b);
+
+(a,b)->{return (a+b);} ; 
+
+(a,b)->{
+System.out.println("This is multiline lambda expr");
+return (a+b);
+} ;
+
+Rule5 ## Lambda Expression can be used only with Functional Interfaces
+
+Rule6 ## "return" in Lambda expression is optional for single line lambda expression 
+but compulsory for multiline lambda expression 
+
+Imp Questions
+Q1. AddInterfaceOne1 addInterfaceOne1 = (a, b) -> return  (a + b); 
+//Error We must have curly braces if we are using the keyword 'return' in Lambda Expression
+
+Q2. AddInterfaceOne2 addInterfaceOne2 = (a, b) -> {
+			System.out.println("Adding two numbers");
+			 (a + b);
+		};
+//Error We must use the return keyword if Lambda expression has multiple lines. 
+Q3. AddInterfaceOne3 addInterfaceOne3 = (a, b) -> 
+		System.out.println("Adding two numbers");
+		return (a + b);
+//Error we must have curly braces if Lambda expression has multiple lines or return keyword
+
+
+Method Reference
+==================
+Method reference is an alternative syntax for lambda expression
+
+Rule1 : Both method names can be different [Method name in the class and  method name in the interface can be different]
+Rule2 : Parameters in both the methods should be same [Input Parameter should be the same in the interface method and class method.]
+Rule3 : Method reference can be used with functional interface only
+Rule4 : Return type of both the methods can be different [The return type can be different in the interface method and class method.]
+
+ForEach
+==============
+List<Integer> intList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+		intList.forEach(System.out::println);
+		
+Default Method
+=====================
+Default method is a method which is defined in an interface with the keyword 'default'
+Default method is used to provide common functionality that can be reused in all implementing classes
+Default method in an interface should have body it can't be empty
+It is not compulsory to override a default method.
+The class that implements the interface inherits the interface default methods
+default public int addTwoNumber(int number1, int number2) {
+		int sum = number1 + number2;// Common Code
+		return sum;
+	}
+No need to override default method
+We can have any number of default methods in an interface
+What was the need of default methods?
+--------------------------------------
+Usecase1: suppose we have one interface for which there are 10 implementing classes. 
+After some time we want to introduce one new method in the interface. 
+All 10 classes will be impacted we need to provide implementation in all 10 classes
+Solution: We need to add this new method in all implementation classes which is very difficult.
+Another solution is add default method in the interface
+
+example In java8 new interface Stream is introduced
+In Java9 two new methods are added in the interface Stream
+takeWhile & dropWhile

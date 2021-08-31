@@ -1,0 +1,10 @@
+execute from where folder parent folder of helloModule folder
+// command to compile module 
+javac --module-source-path . -d out -m helloModule/mypackage.HelloDemo
+if we get error: module helloModule/mypackage.HelloDemo not found in module source path
+then java version problem
+"C:\openjdk-11\jdk-11\bin\javac" --module-source-path . -d out -m helloModule/mypackage.HelloDemo
+"C:\openjdk-11\jdk-11\bin\java" --module-path out -m helloModule/mypackage.HelloDemo
+
+// command to create custome jre
+jlink --module-path out --add-modules helloModule,java.base --output jretest2
