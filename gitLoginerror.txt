@@ -1,0 +1,67 @@
+
+git error ============
+https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/
+remote: Password authentication is temporarily disabled as part of a brownout. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-07-30-token-authentication-requirements-for-api-and-git-operations/ for more information.
+fatal: unable to access 'https://github.com/kaushalece81/java-practice.git/': The requested URL returned error: 403
+
+SSL certificate problem: unable to get local issuer certificate git
+https://stackoverflow.com/questions/23885449/unable-to-resolve-unable-to-get-local-issuer-certificate-using-git-on-windows
+
+solution
+=======================================
+C:\practiceGit\java-practice\.git\config
+vi .git/config 
+url=git@github.com:kaushalece81/java-practice.git
+copy ssh path from git hub:     git@github.com:kaushalece81/java-practice.git
+Change the url to your project 
+https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+Generating a new SSH key
+=============================
+open git bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+ssh-keygen -t ed25519 -C "kaushalece81@gmail.com"
+enter file name : enterpassphrase: ampacity
+Enter same passphrase again: ampacity
+logs=============
+Your identification has been saved in /c/Users/kaushlender.sharma/.ssh/id_ed25519
+Your public key has been saved in /c/Users/kaushlender.sharma/.ssh/id_ed25519.pub
+
+Go to the path : C:\Users\kaushlender.sharma\.ssh
+Ensure the ssh-agent is running.
+================================
+start ssh agent use below command in bash
+eval "$(ssh-agent -s)"
+displays : Agent pid 1721
+Add your SSH private key to the ssh-agent. 
+=============================================
+syntax : ssh-add ~/.ssh/id_ed25519
+eg..
+
+$ ssh-add /c/Users/kaushlender.sharma/.ssh/id_ed25519
+Enter passphrase for /c/Users/kaushlender.sharma/.ssh/id_ed25519:
+Identity added: /c/Users/kaushlender.sharma/.ssh/id_ed25519 (kaushalece81@gmail.com)
+
+Adding a new SSH key to your GitHub account
+=============================================
+https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+1.Go to git hub account in browser [Copies the contents of the id_ed25519.pub file to your clipboard from location : /c/Users/kaushlender.sharma/.ssh/id_ed25519.pub]
+2.In the upper-right corner of any page, click your profile photo, then click Settings
+3.In the user settings sidebar, click SSH and GPG keys.
+4.Click New SSH key .
+5.In the "Title" field, add a label "SSH-Laptop" for the new key. 
+6.Paste your key into the "Key" field.[contents of the id_ed25519.pub file]
+7. Click Add SSH key.
+8. If prompted, confirm your GitHub password. : git pwd
+9. now open git bash for existing git repo eg. C:\practiceGit\java-practice
+10. git pull
+Warning: Permanently added the RSA host key for IP address  to the list of known hosts.
+11. Enter passphrase for key '/c/Users/kaushlender.sharma/.ssh/id_ed25519': ampacity
+
+
+Email will be received :
+The following SSH key was added to your account:
+subject : [GitHub] A new public key was added to your account
+SSH-Laptop
+
+
