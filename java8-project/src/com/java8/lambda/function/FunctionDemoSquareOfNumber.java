@@ -2,7 +2,7 @@ package com.java8.lambda.function;
 
 import java.util.function.Function;
 
-public class FunctionDemo1 {
+public class FunctionDemoSquareOfNumber {
 	public static void main(String args[]) {
 		beforeJava8();//Without Function Functional Interface
 		fromJava8();//With Function Functional Interface

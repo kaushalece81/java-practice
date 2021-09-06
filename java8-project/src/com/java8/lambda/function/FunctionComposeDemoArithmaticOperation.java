@@ -2,7 +2,7 @@ package com.java8.lambda.function;
 
 import java.util.function.Function;
 
-public class FunctionComposeDemo2 {
+public class FunctionComposeDemoArithmaticOperation {
 	public static void main(String args[]) {
 
 		Function<Integer, Integer> function1 = n1 -> n1 + n1;

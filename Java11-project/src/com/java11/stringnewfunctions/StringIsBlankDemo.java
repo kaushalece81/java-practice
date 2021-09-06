@@ -1,4 +1,4 @@
-package com.java11;
+package com.java11.stringnewfunctions;
 public class StringIsBlankDemo {
 
 	public static void main(String[] args) {

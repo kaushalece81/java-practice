@@ -17,7 +17,10 @@ Streams API
 Functional interface
 ===================
 Functional interface = Interface with 1 abstract method or SAM Single abstract method interface
+Functional interface has exactly one abstract method but it can have any number of default and static methods in the interface
 Abstract method = method without body
+Functional Interface can have an additional abstract method from Object class. eg equals method
+Non abstract Method in functional interfaces should be either static or default otherwise compilation error.
 
 Example of Functional interface. Before java8 it self these exists
 these interfaces are called SAM Single abstract method Interfaces
@@ -114,13 +117,14 @@ Default method is a method which is defined in an interface with the keyword 'de
 Default method is used to provide common functionality that can be reused in all implementing classes
 Default method in an interface should have body it can't be empty
 It is not compulsory to override a default method.
+No need to override default method
+We can have any number of default methods in an interface
 The class that implements the interface inherits the interface default methods
 default public int addTwoNumber(int number1, int number2) {
 		int sum = number1 + number2;// Common Code
 		return sum;
 	}
-No need to override default method
-We can have any number of default methods in an interface
+
 What was the need of default methods?
 --------------------------------------
 Usecase1: suppose we have one interface for which there are 10 implementing classes. 
@@ -132,3 +136,204 @@ Another solution is add default method in the interface
 example In java8 new interface Stream is introduced
 In Java9 two new methods are added in the interface Stream
 takeWhile & dropWhile
+
+
+static method in interface
+==============================
+Introduced in java8
+We can access static method of interface with the interface name directly
+Static method is method defined in an interface with the keyword 'static'
+Static method is used to provide utility method/helper method in an interface
+Static method is used to provide common functionality which can be reused in all implementing classes
+We can have any number of static methods in an interface.
+Static method in an interface should have body and it can't be empty
+ A static method can't access non static method and non static variable
+ We can't override interface static method.
+ Static method helps in providing security by not allowing implementing classes to override static method
+eg.
+static public void myUtilityMethod2() {
+		System.out.println("This a utility method2");
+}
+
+Java added new static methods in the Stream interface
+eg
+1. ofNullable
+2. Iterate
+
+
+From Java 8, in the interface itself, we can have default methods and static methods. 
+Should we use Abstract classes from Java 8 onwards?
+=======================================================================================
+Yes. They are still useful. They can contain non-static, non-final methods and 
+attributes (protected, private in addition to public), 
+which is not possible even with Java-8 interfaces
+
+Predefined Functional Interface
+=================================
+1. It takes a single input and returns a single output.
+
+Real time example
+convert doller to INR 
+we can use Function<T,R> instead of creating own method
+method-----
+R apply(T t)
+default method andThen() 
+default method compose() 
+swtatic method identity)_
+
+example 
+Function<String, String> f1=s->s.toUpperCase();
+Function<String, String> f2=s->s+" World";
+System.out.println("andThen Output : "+f1.andThen(f2).apply("Hello"));
+//andThen Output : HELLO World
+
+System.out.println("Output - Compose : " + f1.compose(f2).apply("Hello"));
+//Output - Compose : HELLO WORLD
+
+As you can see, the difference between compose and andThen is the order they execute the functions. 
+While the compose function executes the caller last and the parameter first, 
+the andThen executes the caller first and the parameter last.
+
+Function<String, String> function = Function.identity();
+System.out.println(function.apply("Java8"));
+// output : Java8
+//identity method Returns a function that always returns its input argument.
+
+Predicate
+============
+1. Introduced in java8
+boolean test(T t);
+2. Predicate is predefined funcational interface provided by java under java.util.function package.
+3. It takes an object as input and returns either true or false based on condition.
+4. It predicates either true of false.
+5. Almost all java application has the requirements of checking whether the condition is true or false, this is a common requirement.
+6. Instead of writing own method to check whether the particular condition is true or false, we can use predefined Functional interface 'Predicate' provided by java 
+Predicate<Integer> p = transactionAmount -> transactionAmount > 10000;
+if (p.test(amount)) {
+			System.out.println("Transaction Amount can't be greater than 10000");
+}
+
+Supplier
+============
+Predefined Functional interface
+T get();
+1. It takes no input and returns the output
+
+Supplier<Double> supplier = () -> inrRate;
+System.out.println("fromJava8 :INR rate is " + supplier.get());
+		
+Consumer
+===========
+Predined Functional Interface
+ void accept(T t);
+1. It takes single input but returns nothing.
+Consumer<String> consumer = message -> EmailUtility.sendEmail(message);
+consumer.accept("Your Account has been created");
+		
+Consumer<String> consumer = str -> System.out.println(str.toUpperCase());
+consumer.accept("Java Fast Forward");
+
+Streams
+============
+1. Introduced in java8
+2. Stream is a sequence of elements supporting sequential and parallel aggregate operations.
+3. Stream is used for processing objects from collections
+
+default Stream<E> stream()
+Returns a sequential Stream with this collection as its source.
+
+javaVersionList.stream().filter(javaVersion -> javaVersion % 2 == 0).collect(Collectors.toList());
+filter is an intermediate operation which return Stream
+collect is a terminal operation which return collection
+
+Stream parts
+==================================================================================
+source --> Intermediate Operation --> Intermediate Operation --> Terminal Operation
+
+source converts Collection to stream
+--------------------------------------
+List<Integer> javaVersionList = new ArrayList<>();
+Stream<Integer> javaVersionStream = javaVersionList.stream();
+
+Intermediate Operation Returns Stream
+--------------------------------------
+Stream<Integer> evenJavaVersionStream = javaVersionStream.filter(javaVersion -> javaVersion % 2 == 0);
+
+Various Intermediate Operations : 
+filter(),limit(),sorted(),map(),flatMap(),peek()
+
+Terminal Operation Returns Collection it collects final data
+--------------------------------------
+List<Integer> evevJavaVersionList = evenJavaVersionStream.collect(Collectors.toList());
+Various Terminal Operations : 
+collect(),count(),forEach(),reduce(),min(),max()
+
+Stream Map Method
+==================
+Map is an intermediate operation method. Map converts each element in the collection into an object.
+map() has one to one mapping
+
+eg. list = {Java7,Java 8,Java 9}
+using map() want to convert each object to uppercase
+list={JAVA 7,JAVA 8,JAVA 9}
+
+List<String> javaVersionUpperCaseList = javaVersionList.stream()
+										.map(javaVersion -> javaVersion.toUpperCase())
+										.collect(Collectors.toList());
+
+Stream - flatMap() method
+==========================
+Its is an intermediate operation.
+It returns multiple objects of the single element
+eg. list = {Java7,Java 8,Java 9}
+using flatMap() want to convert each object to uppercase
+list={JAVA 7,JAVA 8,JAVA 9} also convert to lower case
+list={java 7,java 8,java 9} also concate string KK
+list={JAVA 7+KK,JAVA 8+KK,JAVA 9+KK}
+
+Here for each element we have 3 objects one to three mapping
+flatMap() has one to many mapping
+
+List<String> javaVersionUpperCaseList = javaVersionList.stream()
+.flatMap(javaVersion -> Stream.of(javaVersion.toUpperCase(),javaVersion.toLowerCase(),javaVersion.concat(" JFF")))
+.collect(Collectors.toList());
+
+Prallel Stream
+===================
+Parallel stream can process 5 times better compared to sequential stream. 
+However this is not always the same.
+
+Parallel Stream performance depends on the number of threads and processor
+ available in the machine where the program is being executed.
+
+Predicate<Integer> evenPredicate = (a -> a % 2 == 0);
+		List<Integer> evenList =intList
+				.stream()   // for sequential stream
+				.filter(evenPredicate)
+				.collect(Collectors.toList());
+		List<Integer> evenList =intList
+				.parallelStream()  // for parallel stream
+				.filter(evenPredicate)
+				.collect(Collectors.toList());
+				
+Joda java.time package
+=========================
+java.time is inspired by joda time
+Stephen Colebourne is the author of Joda Time
+java.time package is created by the author of Joda time and Oracle team.
+Java.time package address many problems of java date and time ie. java.util.Date
+
+Problems of Java Date & Time of java.util package
+-------------------------------------------------
+No consistency between month and day
+1. Months starts with 1
+2. Day starts with 0
+1. Java.util.Date class represents both date and time
+2. No separate class for data and separate class for Time. 
+3. We have to write separate logic to extract date only and time only.
+4. ava.util.Date class is not thread safe 
+5. You can't add/subtract some days to a date object
+6. Dependency on 3rd party library org.apche.commons.lang3.time.DateUtils
+
+
+

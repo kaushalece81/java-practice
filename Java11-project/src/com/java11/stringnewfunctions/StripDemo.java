@@ -1,4 +1,4 @@
-package com.java11;
+package com.java11.stringnewfunctions;
 public class StripDemo {
 
 	public static void main(String[] args) {

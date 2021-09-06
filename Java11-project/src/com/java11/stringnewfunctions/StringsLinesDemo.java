@@ -1,4 +1,4 @@
-package com.java11;
+package com.java11.stringnewfunctions;
 import java.util.stream.Stream;
 
 public class StringsLinesDemo {

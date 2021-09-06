@@ -19,6 +19,7 @@ public class ParalelStreamDemo {
 				.stream()
 				.filter(evenPredicate)
 				.collect(Collectors.toList());
+		
 	}
 
 	private static void paralelStream() {
@@ -32,7 +33,7 @@ public class ParalelStreamDemo {
 				.parallelStream()
 				.filter(evenPredicate)
 				.collect(Collectors.toList());
-	
+		//evenList.forEach(System.out::println);
 	}
 	public static void main(String args[]) {
 		Instant startTime = Instant.now();

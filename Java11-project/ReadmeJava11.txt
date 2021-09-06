@@ -34,7 +34,7 @@ Tools removed in java 11
 applietviewer launcher
 wsimport
 wsgen
-schemahen
+schemagen
 Xjc
 
 

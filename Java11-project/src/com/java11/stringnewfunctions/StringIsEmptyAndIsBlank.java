@@ -1,4 +1,4 @@
-package com.java11;
+package com.java11.stringnewfunctions;
 
 import org.apache.commons.lang3.StringUtils;
 //set in classpath jar file commons-lang3-3.11.jar
