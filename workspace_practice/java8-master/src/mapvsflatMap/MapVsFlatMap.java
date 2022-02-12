@@ -14,14 +14,14 @@ public class MapVsFlatMap {
         List<String> emails = customers.stream()
                 .map(customer -> customer.getEmail())
                 .collect(Collectors.toList());
-        System.out.println(emails);
+        System.out.println("map :: "+emails);
 
 //customer -> customer.getPhoneNumbers()  ->> one to many mapping
         //customer -> customer.getPhoneNumbers()  ->> one to many mapping
         List<List<String>> phoneNumbers = customers.
                 stream().map(customer -> customer.getPhoneNumbers())
                 .collect(Collectors.toList());
-        System.out.println(phoneNumbers);
+        System.out.println("map :: "+phoneNumbers);
 
         //List<Customer>  convert List<String> -> Data Transformation
         //mapping : customer -> phone Numbers
@@ -29,6 +29,6 @@ public class MapVsFlatMap {
         List<String> phones = customers.stream()
                 .flatMap(customer -> customer.getPhoneNumbers().stream())
                 .collect(Collectors.toList());
-        System.out.println(phones);
+        System.out.println("Flatmap :: "+phones);
     }
 }
