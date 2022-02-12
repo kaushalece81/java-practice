@@ -1,5 +1,5 @@
 module com.clientmodule {
-	requires com.mymodule;  // here we linked com.clientmodule with com.mymodule
+	requires com.mymodule;// here we linked com.clientmodule with com.mymodule
 }
 
 /* Hover over cursor to error com.mymodule line 2
