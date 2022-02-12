@@ -1,5 +1,0 @@
-1. Job -- a task
-2. Trigger
-	1. Simple Trigger  [run only once]
-	2. Cron Trigger [run always whenever condition satisfied]
-3. Scheduler
