@@ -1,0 +1,3 @@
+module helloModule {
+	exports mypackage;
+}
