@@ -4,7 +4,10 @@ public class PatternMatchingExample {
 
 	public static void main(String[] args) {
 		System.out.println("formatter called : "+ formatter(3.0));
-		System.out.println("formatterPatternSwitch called : "+ formatterPatternSwitch(3.0));
+		System.out.println("formatter called : "+ formatter(3));
+		System.out.println("formatter called : "+ formatter(3l));
+		System.out.println("formatter called : "+ formatter("3"));
+		//System.out.println("formatterPatternSwitch called : "+ formatterPatternSwitch(3.0));
 		
 	}
 
@@ -22,13 +25,13 @@ public class PatternMatchingExample {
 		return formatted;
 	}
 	
-	static String formatterPatternSwitch(Object obj) {
-		return switch(obj) {
-		case Integer i -> String.format("Integer %d", i);
-		case Long l -> String.format("Long %d", l);
-		case Double d -> String.format("Double %f", d);
-		case String s -> String.format("String %s", s);
-		default obj.toString();
-		};
-	}
+//	static String formatterPatternSwitch(Object obj) {
+//		return switch(obj) {
+//		case Integer i -> String.format("Integer %d", i);
+//		case Long l -> String.format("Long %d", l);
+//		case Double d -> String.format("Double %f", d);
+//		case String s -> String.format("String %s", s);
+//		default obj.toString();
+//		};
+//	}
 }
