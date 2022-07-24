@@ -1,5 +1,5 @@
 package com.java16.record;
-//feature in java16
+//feature in java16  preview feature in java 14,15
 public record Employee(int id, String name, int age, double salary) {
 
 	public Employee() {
