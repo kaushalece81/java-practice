@@ -25,7 +25,7 @@ public class MapVsFlatMap {
 
         //List<Customer>  convert List<String> -> Data Transformation
         //mapping : customer -> phone Numbers
-        //customer -> customer.getPhoneNumbers()  ->> one to many mapping
+        //customer -> customer.getPhoneNumbers()  ->> one to many mapping  flatens
         List<String> phones = customers.stream()
                 .flatMap(customer -> customer.getPhoneNumbers().stream())
                 .collect(Collectors.toList());
